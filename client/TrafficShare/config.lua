@@ -9,8 +9,6 @@ application =
 	{
 		width = display.pixelWidth,
 		height = display.pixelHeight, 
-		--width = display.pixelWidth,
-		--height = display.pixelHeight,
 		scale = "letterbox",
 		fps = 60,
 		
