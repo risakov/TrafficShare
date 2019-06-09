@@ -22,8 +22,11 @@ local function webViewShow()
     end
 
     local webView = native.newWebView( display.contentCenterX, display.contentCenterY*0.87, display.contentWidth*1.08 , display.contentHeight - display.contentHeight*0.097)
-    webView:request("index.html", system.ResourceDirectory)--
+    webView:request("index.html", system.ResourceDirectory)
     local sceneGroup = scene.view
+
+    --------------------------------------------------------------------------------------------------
+
     scene.textReg1 = display.newText({
 	    text = "Поехали!",     
 	    x = display.contentCenterX,
@@ -57,11 +60,11 @@ local function webViewShow()
 	        width = Width*0.34,
 	        height = Height * 0.12,
 	        fontSize = 40*ScaleFont,
-	        fillColor = {default = {255/255,255/255,191/255,1}, over = {255/255,255/255,191/255,0.5}}
+	        fillColor = {default = {38/255,255/255,191/255,1}, over = {38/255,255/255,191/255,0.5}}
 	    }
 	)
 
-
+	--------------------------------------------------------------------------------------------------
 
 	scene.buttonReg1.x = display.contentCenterX
 	scene.buttonReg1.y = display.contentCenterY*1.88
@@ -94,13 +97,15 @@ local function webViewShow()
 	        width = Width*0.34,
 	        height = Height * 0.12,
 	        fontSize = 40*ScaleFont,
-	        fillColor = {default = {255/255,255/255,191/255,1}, over = {255/255,255/255,191/255,0.5}}
+	        fillColor = {default = {38/255,255/255,191/255,1}, over = {38/255,255/255,191/255,0.5}}
 	    }
 	)
 	scene.buttonReg2.x = display.contentCenterX*1.68
 	scene.buttonReg2.y = display.contentCenterY*1.88
 	frontObject:insert(scene.buttonReg2)
 	frontObject:insert(scene.textReg2)
+
+--------------------------------------------------------------------------------------------------
 
 	scene.textReg3 = display.newText({
 	    text = "Профиль",     
@@ -127,7 +132,7 @@ local function webViewShow()
 	        width = Width*0.329,
 	        height = Height * 0.12,
 	        fontSize = 40*ScaleFont,
-	        fillColor = {default = {255/255,255/255,191/255,1}, over = {255/255,255/255,191/255,0.5}}
+	        fillColor = {default = {38/255,255/255,191/255,1}, over = {38/255,255/255,191/255,0.5}}
 	    }
 	)
 
@@ -135,6 +140,9 @@ local function webViewShow()
 	scene.buttonReg3.y = display.contentCenterY*1.88
 	frontObject:insert(scene.buttonReg3)
 	frontObject:insert(scene.textReg3)
+	
+	--------------------------------------------------------------------------------------------------
+
 end
 
 function scene:create(event)

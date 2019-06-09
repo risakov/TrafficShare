@@ -12,7 +12,7 @@ local userClass = require("Classes.User")
 _G.User = userClass:new({})
 local composer = require("composer")
 
-composer.gotoScene("Scenes.Authorization")
+composer.gotoScene("Scenes.Destination")
 
 
 

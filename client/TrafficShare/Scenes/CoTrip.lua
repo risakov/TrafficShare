@@ -2,24 +2,24 @@ local composer = require("composer")
 local widget = require("widget")
 
 local scene = composer.newScene()
-local frontObject = display.newGroup()
 local backObject = display.newGroup()
+local frontObject = display.newGroup()
 
-local function typeOfATransport()
-	scene.datePicker = widget.newDatePickerWheel(currYear, currMonth, currDay)
-	scene.datePicker.anchorChildren = true
-	scene.datePicker.anchorX = display.contentCenterX
-	scene.datePicker.anchorY = display.contentCenterY
-	scene.datePicker.x = display.contentCenterX
-	scene.datePicker.y = 0
-    sceneGroup:insert(scene.datePicker)
+
+local function CoTrip()
+
+	local sceneGroup = scene.view
+	
+
+--------------------------------------------------------------------------------------------------
+
 end
 function scene:create(event)
-
 	local sceneGroup = self.view
 	table.insert(sceneGroup,backObject)
     table.insert(sceneGroup,frontObject)
-    typeOfATransport()
+    scene.background = display.newRect( backObject, CenterX, CenterY, Width, Height )
+    CoTrip()
    	
 end
 
