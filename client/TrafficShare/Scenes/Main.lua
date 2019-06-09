@@ -4,12 +4,12 @@ local widget = require("widget")
 local json = require( "json" )
 
 local scene = composer.newScene()
-local frontObject = display.newGroup()
 local backObject = display.newGroup()
+local frontObject = display.newGroup()
 local webView
 
 local function webViewShow()
- 
+ 	scene.background = display.newRect( backObject, CenterX, CenterY, Width, Height )
     local function handleResponse( event )
  
         if not event.isError then
@@ -132,9 +132,13 @@ local function webViewShow()
 end
 
 function scene:create(event)
+
 	local sceneGroup = self.view
+
+	composer.removeHidden()
 	table.insert(sceneGroup,backObject)
     table.insert(sceneGroup,frontObject)
+
     webViewShow()
    	
 end

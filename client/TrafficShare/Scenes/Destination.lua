@@ -136,6 +136,41 @@ local function Destination()
 	})
 	scene.textNext:setFillColor(1,1,1)
 
+--------------------------------------------------------------------------------------------------
+
+	scene.buttonExit = widget.newButton(
+	{
+	    onEvent = function (event)
+	  		if ( "ended" == event.phase ) then
+	       		print( "Button was pressed and released" )
+	       		composer.gotoScene("Scenes.Main")
+	       	end
+	    end,
+	    emboss = false,
+	    shape = "Rect",
+	    width = Width*0.2,
+	    height = Height * 0.1,
+	    fillColor = {default = {36/255,122/255,191/255,1}, over = {36/255,122/255,191/255,0.1}}
+	})
+	scene.buttonExit.x = Width*0.1
+	scene.buttonExit.y = Height * 0.05
+	frontObject:insert(scene.buttonExit)
+
+	scene.textBack = display.newText({
+		parent = frontObject,
+	    text = "Назад",     
+	    x = Width*0.1,
+	    y = Height*0.05, 
+	    width = Width/4,
+	    font = native.systemFont,   
+	    fontSize = 42*ScaleFont,
+	    align = "center"  -- Alignment parameter
+	})
+	scene.textBack:setFillColor(1,1,1,0.6)
+	scene.textBack.align = "center"
+
+--------------------------------------------------------------------------------------------------
+
 end
 function scene:create(event)
 	local sceneGroup = self.view
