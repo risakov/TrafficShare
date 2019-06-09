@@ -35,17 +35,50 @@ local function Destination()
 	scene.fieldFrom.inputType = "string"
 	scene.fieldFrom:resizeFontToFitHeight()
 	table.insert(frontObject,scene.fieldFrom)
-	datePicker = widget.newDatePickerWheel(currYear, currMonth, currDay)
-	datePicker.anchorChildren = true
-	datePicker.anchorX = display.contentCenterX
-	datePicker.anchorY = display.contentCenterY
-	datePicker.x = display.contentCenterX
-	datePicker.y = 0
-    sceneGroup:insert(datePicker)
+
+	local days = {}
+	local years = {}
+	for i = 1,31 do days[i] = i end
+	for j = 1,47 do years[j] = 1969+j end
+
+	local columnData = { 
+		{
+			align = "right",
+			width = Width*0.3,
+			startIndex = 5,
+			labels = {
+				"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" 
+			},
+		},
+		{
+			align = "center",
+			width = Width*0.2,
+			startIndex = 18,
+			labels = days,
+		},
+		{
+			align = "center",
+			width = Width*0.2,
+			startIndex = 21,
+			labels = years,
+		},
+	}
+		
+	-- Create a new Picker Wheel
+	scene.pickerWheel = widget.newPickerWheel {
+		x = CenterX,
+		y = Height * 0.7,
+		columns = columnData,
+		rowHeight = Height *0.05,
+		width = Width * 0.8,
+		style = "resizable"
+	}
+	scene.pickerWheel.x = display.contentCenterX
+	frontObject:insert( scene.pickerWheel )
 
 --------------------------------------------------------------------------------------------------
 
-scene.textTo = display.newText({
+	scene.textTo = display.newText({
 	    text = "Куда?",     
 	    x = CenterX*0.8,
 	    y = CenterY*0.7, 
@@ -71,9 +104,42 @@ scene.textTo = display.newText({
 	
 --------------------------------------------------------------------------------------------------
 
+	scene.buttonContinue = widget.newButton(
+	{
+	    onEvent = function (event)
+	  		if ( "ended" == event.phase ) then
+	       		print( "Button was pressed and released" )
+	       		composer.gotoScene("Scenes.People")
+	       	end
+	    end,
+	    emboss = false,
+	    shape = "roundedRect",
+	    width = Width*0.6,
+	    height = Height * 0.05,
+	    cornerRadius = 40,
+	    fillColor = {default = {36/255,122/255,191/255,1}, over = {36/255,122/255,191/255,0.5}}
+	})
+	scene.buttonContinue.x = CenterX
+	scene.buttonContinue.y = Height * 0.9
+	frontObject:insert(scene.buttonContinue)
+
+	scene.textNext = display.newText({
+		parent = frontObject,
+	    text = "Готово",     
+	    x = display.contentCenterX,
+	    y = Height * 0.91, 
+	    width = Width * 0.6,
+	    height = Height * 0.05,
+	    font = native.systemFont,   
+	    fontSize = 36 * ScaleFont,
+	    align = "center"
+	})
+	scene.textNext:setFillColor(1,1,1)
+
 end
 function scene:create(event)
 	local sceneGroup = self.view
+	composer.removeHidden()
 	table.insert(sceneGroup,backObject)
     table.insert(sceneGroup,frontObject)
     scene.background = display.newRect( backObject, CenterX, CenterY, Width, Height )
@@ -90,7 +156,8 @@ function scene:hide(event)
 end
 
 function scene:destroy(event)
-
+	scene.fieldTo:removeSelf()
+	scene.fieldFrom:removeSelf()
 end
 
 scene:addEventListener("create",scene)

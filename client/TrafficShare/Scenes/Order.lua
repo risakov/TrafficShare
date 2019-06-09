@@ -6,13 +6,6 @@ local frontObject = display.newGroup()
 local backObject = display.newGroup()
 
 local function typeOfATransport()
-	scene.datePicker = widget.newDatePickerWheel(currYear, currMonth, currDay)
-	scene.datePicker.anchorChildren = true
-	scene.datePicker.anchorX = display.contentCenterX
-	scene.datePicker.anchorY = display.contentCenterY
-	scene.datePicker.x = display.contentCenterX
-	scene.datePicker.y = 0
-    sceneGroup:insert(scene.datePicker)
 end
 function scene:create(event)
 

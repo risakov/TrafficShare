@@ -9,10 +9,10 @@ _G.Font = native.systemFont
 _G.ScaleFont = display.pixelWidth / display.contentWidth
 
 local userClass = require("Classes.User")
-_G.User = userClass:new({})
+_G.User = userClass:new({name = "Роман", number = "2141 ",image = "Images/roma.png"})
 local composer = require("composer")
 
-composer.gotoScene("Scenes.Authorization")
+composer.gotoScene("Scenes.Profile")
 
 
 
