@@ -9,6 +9,7 @@ function scene:create(event)
 	local sceneGroup = self.view
 	table.insert(sceneGroup,backObject)
     table.insert(sceneGroup,frontObject)
+    
    	
 end
 
